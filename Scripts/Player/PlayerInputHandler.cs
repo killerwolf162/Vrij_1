@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerInputHandler : MonoBehaviour
+{
+    private PlayerMovement player_movement;
+    
+
+    public void OnMove(InputAction.CallbackContext input)
+    {
+        player_movement.OnMove(input);
+    }
+
+    public void OnSprint(InputAction.CallbackContext input)
+    {
+        player_movement.OnSprint(input);
+    }
+}
