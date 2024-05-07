@@ -16,10 +16,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private GameObject start_waypoint, waypoint, player;
 
-    private bool at_waypoint = false;
-
-    public Vector3 target;
-    private Queue<Vector3> waypoints = new Queue<Vector3>();
+    private Vector3 target_pos;
 
     [SerializeField]
     private LayerMask player_detection_layer;
@@ -29,12 +26,20 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("chase: Enter");
         while (state == State.Chase)
         {
-            target = player.transform.position;
-            agent.SetDestination(target);
-            if (Vector3.Distance(this.transform.position, player.transform.position) > 15)
-                state = State.Search;
+            while (Check_for_player() == true)
+            {
+                target_pos = player.transform.position;
+                agent.SetDestination(target_pos);
 
-            yield return null;
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(1);
+
+            target_pos = player.transform.position;
+            agent.SetDestination(target_pos);
+            state = State.Search;
+            
         }
         Debug.Log("patrol: Exit");
         NextState();
@@ -43,23 +48,29 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Search_state()
     {
         Debug.Log("search: Enter");
+        var last_known_pos = player.transform.position;
         while (state == State.Search)
         {
-            target = this.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-            if (Vector3.Distance(this.transform.position, player.transform.position) <= 10)
-                state = State.Chase;
-            yield return new WaitForSeconds(1);
-            target = this.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-            if (Vector3.Distance(this.transform.position, player.transform.position) <= 10)
-                state = State.Chase;
-            yield return new WaitForSeconds(1);
-            target = this.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-            if (Vector3.Distance(this.transform.position, player.transform.position) <= 10)
-                state = State.Chase;
-            yield return new WaitForSeconds(1);
-            state = State.Patrol;
 
-            yield return null;
+            if(Check_for_player() == true)
+            {
+                state = State.Chase;
+            }
+            else
+            {
+                target_pos = last_known_pos;
+                yield return new WaitForSeconds(0.5f);
+                target_pos = this.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+                yield return new WaitForSeconds(0.5f);
+                target_pos = this.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+                yield return new WaitForSeconds(0.5f);
+                target_pos = this.transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+                yield return new WaitForSeconds(0.5f);
+                state = State.Patrol;
+
+                yield return null;
+            }
+            
         }
         Debug.Log("patrol: Exit");
         NextState();
@@ -68,13 +79,10 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Patrol_state()
     {
         Debug.Log("patrol: Enter");
-        target = waypoint.transform.position;
+        target_pos = waypoint.transform.position;
         while (state == State.Patrol)
         {
-            agent.SetDestination(target);
-            if (Vector3.Distance(this.transform.position, player.transform.position) <= 15)
-                state = State.Chase;
-
+            agent.SetDestination(target_pos);
             yield return null;
         }
         Debug.Log("patrol: Exit");
@@ -84,30 +92,12 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        //if (state == State.chase)
-        //{
-        //    StopAllCoroutines();
-        //    StartCoroutine(Chase_state());
-        //}
 
-        //else if (state == State.patrol)
-        //{
-        //    StopAllCoroutines();
-        //    StartCoroutine(Patrol_state());
-        //}
-
-        //else if (state == State.search)
-        //{
-        //    StopAllCoroutines();
-        //    StartCoroutine(Search_state());
-        //}
     }
 
 
     private void Start()
     {
-        
-
         state = State.Patrol;
         NextState();
     }
@@ -127,83 +117,95 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine((IEnumerator)info.Invoke(this, null));
     }
 
-    public void Set_patrol_state()
-    {
-        StopAllCoroutines();
-        StartCoroutine(Patrol_state());
-    }
-    public void Set_search_state()
-    {
-        StopAllCoroutines();
-        StartCoroutine(Search_state());
-    }
-    public void Set_chase_state()
-    {
-        StopAllCoroutines();
-        StartCoroutine(Chase_state());
-    }
-
-    private void Add_waypoints_to_queue()
-    {
-        waypoints.Enqueue(start_waypoint.transform.position);
-        waypoints.Enqueue(waypoint.transform.position);
-    }
+    //private void Add_waypoints_to_queue()
+    //{
+    //    waypoints.Enqueue(start_waypoint.transform.position);
+    //    waypoints.Enqueue(waypoint.transform.position);
+    //}
 
     private void OnTriggerEnter(Collider other)
     { 
+        //once enemy collides with target waypoint, it spaws to the other waypoint
         if (other.tag == "Waypoint")
         {
-            target = start_waypoint.transform.position;
+            target_pos = start_waypoint.transform.position;
         }
         else if (other.tag == "Start_Waypoint")
         {
-            target = waypoint.transform.position;
-
+            target_pos = waypoint.transform.position;
         }
     }
 
-    private void Check_for_player()
+    private bool Check_for_player()
     {
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), out hit, 10f, player_detection_layer))
+        // forward ray
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             state = State.Chase;
+            return true;
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.white);
+            
         }
 
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.left), out hit, 10f, player_detection_layer))
+        //wide left ray
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(new Vector3(0,0,0.9f)), out hit, 15, player_detection_layer))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f))) * hit.distance, Color.yellow);
             state = State.Chase;
+            return true;
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * 1000, Color.white);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+            
         }
 
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.right), out hit, 10f, player_detection_layer))
+        //narrow left ray
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f)), out hit, 15, player_detection_layer))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f))) * hit.distance, Color.yellow);
             state = State.Chase;
+            return true;
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 1000, Color.white);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+
         }
 
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.back), out hit, 10f, player_detection_layer))
+        //wide right ray
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * hit.distance, Color.yellow);
             state = State.Chase;
+            return true;
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * 1000, Color.white);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.4f,0,0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+            
         }
+
+        // narrow right ray
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
+        {
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * hit.distance, Color.yellow);
+            state = State.Chase;
+            return true;
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+
+        }
+
+
+        return false;
     }
 
 }
