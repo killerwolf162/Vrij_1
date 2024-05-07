@@ -147,10 +147,7 @@ public class EnemyAI : MonoBehaviour
             return true;
         }
         else
-        {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.white);
-            
-        }
 
         //wide left ray
         if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(new Vector3(0,0,0.9f)), out hit, 15, player_detection_layer))
@@ -160,10 +157,7 @@ public class EnemyAI : MonoBehaviour
             return true;
         }
         else
-        {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
-            
-        }
 
         //narrow left ray
         if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f)), out hit, 15, player_detection_layer))
@@ -173,10 +167,7 @@ public class EnemyAI : MonoBehaviour
             return true;
         }
         else
-        {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
-
-        }
 
         //wide right ray
         if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
@@ -186,10 +177,7 @@ public class EnemyAI : MonoBehaviour
             return true;
         }
         else
-        {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.4f,0,0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
-            
-        }
 
         // narrow right ray
         if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
@@ -199,12 +187,7 @@ public class EnemyAI : MonoBehaviour
             return true;
         }
         else
-        {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
-
-        }
-
-
         return false;
     }
 
