@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Rigidbody rig;
     public PlayerInput player_input;
+    private ScentTracking scent;
 
 
     [SerializeField]
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        scent = GetComponent<ScentTracking>();
     }
 
     private void FixedUpdate()
@@ -28,10 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(bool sprinting)
     {
-        if(sprinting == true)
-            rig.transform.Translate(move * Time.deltaTime * sprint_speed);
-        else if(sprinting != true)
-            rig.transform.Translate(move * Time.deltaTime * walk_speed);
+        if (scent.is_smelling == false)
+        {
+          if (sprinting == true)
+              rig.transform.Translate(move * Time.deltaTime * sprint_speed);
+          else if (sprinting != true)
+              rig.transform.Translate(move * Time.deltaTime * walk_speed);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext input_value)
