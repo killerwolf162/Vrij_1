@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "Hold(duration=0.2,pressPoint=0.2)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Smelling",
+                    "type": "Button",
+                    "id": "f057c9fe-6d47-4009-98bd-b666b2d2e8b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.2,pressPoint=0.2)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -90,6 +99,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1d544f07-d996-466f-9e81-651b53b58bfd",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Smelling",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

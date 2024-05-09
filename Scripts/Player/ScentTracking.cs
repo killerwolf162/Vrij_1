@@ -74,14 +74,13 @@ public class ScentTracking : MonoBehaviour
 
     private IEnumerator Smelling(InputAction.CallbackContext input_value)
     {
-        Debug.Log("smelling");
         is_smelling = true; // disables movement in movement script
         Start_playing_particels();
         while( is_smelling == true)
         {
             scent_timer -= Time.deltaTime;
 
-            //give screen a blue overlay/shader, assassin's creed esc.
+            //give screen a blue overlay/shader, assassin's creed esc. something with shaders etc. (https://www.youtube.com/watch?v=7_H0b82y_qU)
 
 
             //turn on the particle system so the player can see it.
