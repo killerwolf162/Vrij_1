@@ -18,6 +18,8 @@ public class ScentTracking : MonoBehaviour
 
     public bool is_smelling;
 
+    private Camera player_camera, smell_camera;
+
 
     public List<ParticleSystem> particle_systems = new List<ParticleSystem>();
 
@@ -25,13 +27,17 @@ public class ScentTracking : MonoBehaviour
     private void Awake()
     {
         particle_systems.AddRange(Resources.FindObjectsOfTypeAll<ParticleSystem>());
+        player_camera = GameObject.FindGameObjectWithTag("Player_camera").GetComponent<Camera>();
+        smell_camera = GameObject.FindGameObjectWithTag("Smell_camera").GetComponent<Camera>();
     }
 
     private void Start()
     {
+        smell_camera.enabled = false;
+        Debug.Log(particle_systems.Count);
         foreach (ParticleSystem system in particle_systems)
         {
-            system.Stop();
+            system.Play();
         }
     }
 
@@ -48,21 +54,21 @@ public class ScentTracking : MonoBehaviour
 
     }
 
-    private void Start_playing_particels()
-    {
-        foreach (ParticleSystem system in particle_systems)
-        {
-            system.Play();
-        }
-    }
+    //private void Start_playing_particels()
+    //{
+    //    foreach (ParticleSystem system in particle_systems)
+    //    {
+    //        system.Play();
+    //    }
+    //}
 
-    private void Stop_playing_particels()
-    {
-        foreach (ParticleSystem system in particle_systems)
-        {
-            system.Stop();
-        }
-    }
+    //private void Stop_playing_particels()
+    //{
+    //    foreach (ParticleSystem system in particle_systems)
+    //    {
+    //        system.Stop();
+    //    }
+    //}
 
     public void OnSmell(InputAction.CallbackContext input_value)
     {
@@ -75,9 +81,11 @@ public class ScentTracking : MonoBehaviour
     private IEnumerator Smelling(InputAction.CallbackContext input_value)
     {
         is_smelling = true; // disables movement in movement script
-        Start_playing_particels();
+        //Start_playing_particels();
         while( is_smelling == true)
         {
+            smell_camera.enabled = true;
+            player_camera.enabled = false;
             scent_timer -= Time.deltaTime;
 
             //give screen a blue overlay/shader, assassin's creed esc. something with shaders etc. (https://www.youtube.com/watch?v=7_H0b82y_qU)
@@ -90,7 +98,9 @@ public class ScentTracking : MonoBehaviour
             if (input_value.ReadValue<float>() <= 0 || scent_timer <= 0) // if timer hits 0 player cant use the ability anymore
             {
                 is_smelling = false;
-                Stop_playing_particels();
+                smell_camera.enabled = false;
+                player_camera.enabled = true;
+                //Stop_playing_particels();
                 StopCoroutine(Smelling(input_value));
             }
         }
