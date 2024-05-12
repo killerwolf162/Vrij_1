@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "Smelling",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "f057c9fe-6d47-4009-98bd-b666b2d2e8b7",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold(duration=0.2,pressPoint=0.2)",
-                    "initialStateCheck": false
+                    "processors": "Normalize(max=1)",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

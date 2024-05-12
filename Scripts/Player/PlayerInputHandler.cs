@@ -18,9 +18,4 @@ public class PlayerInputHandler : MonoBehaviour
     {
         player_movement.OnSprint(input);
     }
-
-    public void OnSmell(InputAction.CallbackContext input)
-    {
-        scent_tracking.OnSmell(input);
-    }
 }

@@ -1,3 +1,4 @@
+using FMPUtils.Visuals.CameraTransition.Examples;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Rigidbody rig;
     public PlayerInput player_input;
-    private ScentTracking scent;
+    private CameraTransition camera_controller;
 
 
     [SerializeField]
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        scent = GetComponent<ScentTracking>();
+        camera_controller = GameObject.FindWithTag("Camera_Controller").GetComponent<CameraTransition>();
     }
 
     private void FixedUpdate()
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(bool sprinting)
     {
-        if (scent.is_smelling == false)
+        if (camera_controller.is_smelling == false)
         {
           if (sprinting == true)
               rig.transform.Translate(move * Time.deltaTime * sprint_speed);
