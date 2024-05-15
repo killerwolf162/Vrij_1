@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Rigidbody rig;
     public PlayerInput player_input;
-    private CameraTransition camera_controller;
+    private CameraController camera_controller;
 
 
     [SerializeField]
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        camera_controller = GameObject.FindWithTag("Camera_Controller").GetComponent<CameraTransition>();
+        camera_controller = GameObject.FindWithTag("Camera_Controller").GetComponent<CameraController>();
     }
 
     private void FixedUpdate()
