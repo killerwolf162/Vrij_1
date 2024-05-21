@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private int walk_speed, sprint_speed;
     private Vector3 move;
     private bool is_walking;
+    public float rotation_speed;
 
     private void Awake()
     {

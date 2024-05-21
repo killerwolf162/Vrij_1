@@ -99,6 +99,7 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         state = State.Patrol;
+        player = GameObject.FindGameObjectWithTag("Player");
         NextState();
     }
 
@@ -140,54 +141,54 @@ public class EnemyAI : MonoBehaviour
     {
         RaycastHit hit;
         // forward ray
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(Vector3.forward), out hit, 3, player_detection_layer))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             state = State.Chase;
             return true;
         }
         else
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 15, Color.white);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 3, Color.white);
 
         //wide left ray
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(new Vector3(0,0,0.9f)), out hit, 15, player_detection_layer))
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(new Vector3(0,0,0.9f)), out hit, 3, player_detection_layer))
         {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f))) * hit.distance, Color.yellow);
             state = State.Chase;
             return true;
         }
         else
-            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 3, Color.white);
 
         //narrow left ray
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f)), out hit, 15, player_detection_layer))
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f)), out hit, 3, player_detection_layer))
         {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(new Vector3(0, 0, 0.9f))) * hit.distance, Color.yellow);
             state = State.Chase;
             return true;
         }
         else
-            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(-0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 3, Color.white);
 
         //wide right ray
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 3, player_detection_layer))
         {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.4f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * hit.distance, Color.yellow);
             state = State.Chase;
             return true;
         }
         else
-            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.4f,0,0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.4f,0,0)) + transform.TransformDirection(Vector3.forward)) * 3, Color.white);
 
         // narrow right ray
-        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 15, player_detection_layer))
+        if (Physics.Raycast(this.transform.position, transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward), out hit, 3, player_detection_layer))
         {
             Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * hit.distance, Color.yellow);
             state = State.Chase;
             return true;
         }
         else
-            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 15, Color.white);
+            Debug.DrawRay(transform.position, (transform.TransformDirection(new Vector3(0.2f, 0, 0)) + transform.TransformDirection(Vector3.forward)) * 3, Color.white);
         return false;
     }
 

@@ -20,6 +20,8 @@ namespace FMPUtils.Visuals.CameraTransition.Examples
         private GameObject player;
 
         private List<Camera> camera_list = new List<Camera>();
+        private List<Camera> normal_camera_list = new List<Camera>();
+        private List<Camera> smell_camera_list = new List<Camera>();
 
         bool reassignAudioListenerToTargetCamera = true;
         public bool is_smelling = false;
@@ -34,17 +36,36 @@ namespace FMPUtils.Visuals.CameraTransition.Examples
             col = player.GetComponent<CapsuleCollider>();
 
             camera_list.AddRange(FindObjectsOfType<Camera>());
-            camera_list.Count();
-            camera_list.Reverse();
 
             foreach (Camera camera in camera_list)
             {
+                if (camera.tag == "Smell_camera")
+                {
+                    smell_camera_list.Add(camera);
+                    
+                }
+                if (camera.tag != "Smell_camera")
+                {
+                    normal_camera_list.Add(camera);
+                }
                 camera.enabled = false;
+            }
+
+
+            smell_camera_list = smell_camera_list.OrderBy(o => o.name).ToList();
+            normal_camera_list = normal_camera_list.OrderBy(o => o.name).ToList();
+
+            foreach (Camera camera in normal_camera_list)
+            {
+                Debug.Log(camera.name);
+            }
+            foreach (Camera camera in smell_camera_list)
+            {
                 Debug.Log(camera.name);
             }
 
-            fromCamera = camera_list[0];
-            toCamera = camera_list[1];
+            fromCamera = normal_camera_list[0];
+            toCamera = smell_camera_list[0];
 
             set_camera_active();
         }
@@ -52,17 +73,16 @@ namespace FMPUtils.Visuals.CameraTransition.Examples
         private void Update()
         {
             bool wasTransitionTriggered = false;
-            bool reassignAudioListenerToTargetCamera = true;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                CameraTransitionEffectController.Instance.ActivateTransition<AlphaFadeTransitionEffect>(fromCamera, toCamera, transitionDuration, reassignAudioListenerToTargetCamera);
+                CameraTransitionEffectController.Instance.ActivateTransition<AlphaFadeTransitionEffect>(fromCamera, toCamera, transitionDuration);
                 wasTransitionTriggered = true;
                 is_smelling = true;
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                CameraTransitionEffectController.Instance.ActivateTransition<AlphaFadeTransitionEffect>(fromCamera, toCamera, transitionDuration, reassignAudioListenerToTargetCamera);
+                CameraTransitionEffectController.Instance.ActivateTransition<AlphaFadeTransitionEffect>(fromCamera, toCamera, transitionDuration);
                 wasTransitionTriggered = true;
                 is_smelling = false;
             }
@@ -88,27 +108,82 @@ namespace FMPUtils.Visuals.CameraTransition.Examples
             if(other.tag == "camera_1")
             {                                           // What the next segment would look like.
                 set_camera_inactive();                 // set_camera_inactive();
-                fromCamera = camera_list[0];           // fromCamera = camera_list[previous number segment number + 2]; 
-                toCamera = camera_list[1];             // toCamera = camera_list[previous number segment number + 2]; 
+                fromCamera = normal_camera_list[0];           // fromCamera = normal_camera_list[previous number segment number + 1]; 
+                toCamera = smell_camera_list[0];            // toCamera = smell_camera_list[previous number segment number +1]; 
                 set_camera_active();                   // set_camera_active(); 
             }
 
             if (other.tag == "camera_2")
             {
                 set_camera_inactive();
-                fromCamera = camera_list[2];
-                toCamera = camera_list[3];
+                fromCamera = normal_camera_list[1];
+                toCamera = smell_camera_list[1];
                 set_camera_active();
             }
 
             if (other.tag == "camera_3")
             {
                 set_camera_inactive();
-                fromCamera = camera_list[4];
-                toCamera = camera_list[5];
+                fromCamera = normal_camera_list[2];
+                toCamera = smell_camera_list[2];
                 set_camera_active();
             }
 
+            if (other.tag == "camera_4")
+            {
+                set_camera_inactive();
+                fromCamera = normal_camera_list[3];
+                toCamera = smell_camera_list[3];
+                set_camera_active();
+            }
+
+            if (other.tag == "camera_5")
+            {
+                set_camera_inactive();
+                fromCamera = normal_camera_list[4];
+                toCamera = smell_camera_list[4];
+                set_camera_active();
+            }
+
+            if (other.tag == "camera_6")
+            {
+                set_camera_inactive();
+                fromCamera = normal_camera_list[5];
+                toCamera = smell_camera_list[5];
+                set_camera_active();
+            }
+
+            if (other.tag == "camera_7")
+            {
+                set_camera_inactive();
+                fromCamera = normal_camera_list[6];
+                toCamera = smell_camera_list[6];
+                set_camera_active();
+            }
+
+            if (other.tag == "camera_8")
+            {
+                set_camera_inactive();
+                fromCamera = normal_camera_list[7];
+                toCamera = smell_camera_list[7];
+                set_camera_active();
+            }
+
+            if (other.tag == "camera_9")
+            {
+                set_camera_inactive();
+                fromCamera = normal_camera_list[8];
+                toCamera = smell_camera_list[8];
+                set_camera_active();
+            }
+
+            if (other.tag == "camera_10")
+            {
+                set_camera_inactive();
+                fromCamera = normal_camera_list[9];
+                toCamera = smell_camera_list[9];
+                set_camera_active();
+            }
 
         }
 
