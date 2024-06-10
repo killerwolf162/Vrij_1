@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5245976254108879738}
   - component: {fileID: 7712517797542970332}
   - component: {fileID: 5816261033975136977}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -29,6 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3834706203121069800}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 71.387, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,7 +38,6 @@ Transform:
   - {fileID: 2964292080660452341}
   - {fileID: 2863190218035968013}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &1562028939311616713
 MeshFilter:
@@ -104,6 +104,7 @@ MonoBehaviour:
   player_input: {fileID: 5245976254108879738}
   walk_speed: 3
   sprint_speed: 5
+  rotation_speed: 0
 --- !u!114 &5245976254108879738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ GameObject:
   - component: {fileID: 3288477448687186624}
   - component: {fileID: 3985159427234879173}
   - component: {fileID: 3788177837797592076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera_Controller
   m_TagString: Camera_Controller
   m_Icon: {fileID: 0}
@@ -246,13 +247,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8221366946443976877}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5842074712144136221}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3288477448687186624
 MonoBehaviour:
@@ -334,7 +335,7 @@ GameObject:
   - component: {fileID: 8481579062089055719}
   - component: {fileID: 9046803959426798504}
   - component: {fileID: 3722046458475365470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,13 +349,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8784908393385851467}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.7095769, y: 0, z: 0, w: 0.704628}
   m_LocalPosition: {x: 0.024, y: 0.351, z: 0.448}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5842074712144136221}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90.401, y: 0, z: 0}
 --- !u!33 &8481579062089055719
 MeshFilter:
