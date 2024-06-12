@@ -57,6 +57,14 @@ public class PlayerMovement : MonoBehaviour
                 }
 
             }
+            if (movementDirection.z < 0)
+            {
+                if (sprinting == true)
+                {
+                    rig.transform.Translate(Vector3.back * Time.deltaTime * sprint_speed);
+                    anim.SetBool("isRunning", true);
+                }
+            }
             if (movementDirection.x > 0)
             {
                 turnRight();
