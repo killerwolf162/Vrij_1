@@ -10961,6 +10961,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (2)
@@ -18055,7 +18059,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 4874126678125670354, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (1)
@@ -23334,6 +23338,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park
@@ -29612,6 +29620,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (9)
@@ -31177,6 +31189,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (7)
@@ -60912,6 +60928,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (6)
@@ -64488,6 +64508,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (4)
@@ -93156,6 +93180,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (3)
@@ -94122,6 +94150,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: fe62c05a428ae2545869395c685c482a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 253781065ab283846a798b683677cff9, type: 2}
     - target: {fileID: 919132149155446097, guid: fe62c05a428ae2545869395c685c482a, type: 3}
       propertyPath: m_Name
       value: lantaarn_park (8)
