@@ -41,7 +41,7 @@ public class EnemyAI : MonoBehaviour
             state = State.Search;
             
         }
-        Debug.Log("patrol: Exit");
+        Debug.Log("Chase: Exit");
         NextState();
     }
 
@@ -72,7 +72,7 @@ public class EnemyAI : MonoBehaviour
             }
             
         }
-        Debug.Log("patrol: Exit");
+        Debug.Log("search: Exit");
         NextState();
     }
 
