@@ -18,11 +18,13 @@ public class PlayerMovement : MonoBehaviour
     private bool is_walking;
     public float rotation_speed;
 
+
+
     private void Awake()
     {
         rig = GetComponent<Rigidbody>();
-        anim = GetComponent<Animator>();
-        camera_controller = GameObject.FindWithTag("Camera_Controller").GetComponent<CameraController>();
+        anim = GetComponentInChildren<Animator>();
+        //camera_controller = GameObject.FindWithTag("Camera_Controller").GetComponent<CameraController>();
     }
 
     private void FixedUpdate()
@@ -32,40 +34,65 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(bool sprinting)
     {
-        if (camera_controller.is_smelling == false)
-        {
-            
 
-            if (movementDirection != Vector3.zero)
+        if (movementDirection == Vector3.zero)
+        {
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isCrouching", true);
+        }
+        if (movementDirection != Vector3.zero)
+        {
+            if(movementDirection.z > 0)
             {
                 if (sprinting == true)
+                {
                     rig.transform.Translate(Vector3.forward * Time.deltaTime * sprint_speed);
-                else if (sprinting != true)
+                    anim.SetBool("isRunning", true);
+                }
+                if (sprinting != true)
+                {
                     rig.transform.Translate(Vector3.forward * Time.deltaTime * walk_speed);
+                    anim.SetBool("isWalking", true);
+                }
 
-                //if(movementDirection == Vector3.up)
-                //{
-                //    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.forward);
-                //    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
-                //}
-                if (movementDirection == Vector3.left)
-                {
-                    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.left);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
-                }
-                else if (movementDirection == Vector3.right)
-                {
-                    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.right);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
-                }
-                else if (movementDirection == Vector3.back)
-                {
-                    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.back);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
-                }
-                
-            }              
+            }
+            if (movementDirection.x > 0)
+            {
+                turnRight();
+            }
+            if (movementDirection.x < 0)
+            {
+                turnLeft();
+            }
+
         }
+
+
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            anim.SetBool("isCrouching", true);
+        }
+        else
+            anim.SetBool("isCrouching", false);
+
+    }
+
+    private void goForward()
+    {
+
+    }
+    private void turnRight()
+    {
+        float angle = rotation_speed * Time.deltaTime;
+        transform.rotation *= Quaternion.AngleAxis(angle, Vector3.up);
+    }
+
+    private void turnLeft()
+    {
+        float angle = -rotation_speed * Time.deltaTime;
+        transform.rotation *= Quaternion.AngleAxis(angle, Vector3.up);
     }
 
     public void OnMove(InputAction.CallbackContext input_value)
