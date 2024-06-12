@@ -7532,6 +7532,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -39.212
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4f15e2cc974ca274d9de11cc5894168a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad3867adad28d2244a2a1be279ff85ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 4f15e2cc974ca274d9de11cc5894168a, type: 3}
       propertyPath: m_Name
       value: Tree4 (7)
@@ -25854,6 +25858,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 97335fc316d38f9458713e3b8a785053, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad3867adad28d2244a2a1be279ff85ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 97335fc316d38f9458713e3b8a785053, type: 3}
       propertyPath: m_Name
       value: Tree6 (14)
@@ -38130,6 +38138,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 97335fc316d38f9458713e3b8a785053, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad3867adad28d2244a2a1be279ff85ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 97335fc316d38f9458713e3b8a785053, type: 3}
       propertyPath: m_Name
       value: Tree6 (31)
@@ -38655,6 +38667,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 97335fc316d38f9458713e3b8a785053, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad3867adad28d2244a2a1be279ff85ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 97335fc316d38f9458713e3b8a785053, type: 3}
       propertyPath: m_Name
       value: Tree6 (35)
