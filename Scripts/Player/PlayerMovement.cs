@@ -49,11 +49,13 @@ public class PlayerMovement : MonoBehaviour
                 {
                     rig.transform.Translate(Vector3.forward * Time.deltaTime * sprint_speed);
                     anim.SetBool("isRunning", true);
+                    anim.SetBool("isWalking", false);
                 }
                 if (sprinting != true)
                 {
                     rig.transform.Translate(Vector3.forward * Time.deltaTime * walk_speed);
                     anim.SetBool("isWalking", true);
+                    anim.SetBool("isRunning", false);
                 }
 
             }
@@ -61,8 +63,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (sprinting == true)
                 {
-                    rig.transform.Translate(Vector3.back * Time.deltaTime * sprint_speed);
+                    rig.transform.Translate(Vector3.forward * Time.deltaTime * sprint_speed);
                     anim.SetBool("isRunning", true);
+                    anim.SetBool("isWalking", false);
+                }
+                if (sprinting != true)
+                {
+                    rig.transform.Translate(Vector3.forward * Time.deltaTime * walk_speed);
+                    anim.SetBool("isWalking", true);
+                    anim.SetBool("isRunning", false);
                 }
             }
             if (movementDirection.x > 0)
