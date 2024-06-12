@@ -90,6 +90,8 @@ namespace FMPUtils.Visuals.CameraTransition.Examples
 
             if (wasTransitionTriggered)
                 (fromCamera, toCamera) = (toCamera, fromCamera);
+
+            this.transform.position = this.transform.parent.position;
         }
 
         private void set_camera_active()

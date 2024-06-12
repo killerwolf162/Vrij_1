@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private int walk_speed, sprint_speed;
-    private Vector3 move;
+    private Vector3 movementDirection;
     private bool is_walking;
     public float rotation_speed;
 
@@ -34,17 +34,45 @@ public class PlayerMovement : MonoBehaviour
     {
         if (camera_controller.is_smelling == false)
         {
-          if (sprinting == true)
-              rig.transform.Translate(move * Time.deltaTime * sprint_speed);
-          else if (sprinting != true)
-              rig.transform.Translate(move * Time.deltaTime * walk_speed);
+            
+
+            if (movementDirection != Vector3.zero)
+            {
+                if (sprinting == true)
+                    rig.transform.Translate(Vector3.forward * Time.deltaTime * sprint_speed);
+                else if (sprinting != true)
+                    rig.transform.Translate(Vector3.forward * Time.deltaTime * walk_speed);
+
+                //if(movementDirection == Vector3.up)
+                //{
+                //    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.forward);
+                //    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
+                //}
+                if (movementDirection == Vector3.left)
+                {
+                    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.left);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
+                }
+                else if (movementDirection == Vector3.right)
+                {
+                    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.right);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
+                }
+                else if (movementDirection == Vector3.back)
+                {
+                    Quaternion to_rotation = Quaternion.LookRotation(movementDirection, Vector3.back);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, to_rotation, rotation_speed * Time.deltaTime);
+                }
+                
+            }              
         }
     }
 
     public void OnMove(InputAction.CallbackContext input_value)
     {
         Vector2 movement = input_value.ReadValue<Vector2>();
-        move = new Vector3(movement.x, 0, movement.y);
+        movementDirection = new Vector3(movement.x, 0, movement.y);
+        movementDirection.Normalize();
     }
 
     public void OnSprint(InputAction.CallbackContext input_value)
