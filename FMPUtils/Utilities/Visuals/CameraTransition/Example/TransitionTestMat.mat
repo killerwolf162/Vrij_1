@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TransitionTestMat
-  m_Shader: {fileID: 4800000, guid: 1df39061acb98244e801ca9b2c9c5f2a, type: 3}
+  m_Shader: {fileID: 4800000, guid: f4f4ba1d10b257d408f0d7474bf2806f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

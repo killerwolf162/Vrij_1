@@ -39,10 +39,19 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
             anim.SetBool("isWalking", false);
-            anim.SetBool("isCrouching", true);
+            return;
         }
-        if (movementDirection != Vector3.zero)
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isWalking", false);
+            return;
+        }
+
+        else if (movementDirection != Vector3.zero)
+        {
+
             if(movementDirection.z > 0)
             {
                 if (sprinting == true)
@@ -61,18 +70,9 @@ public class PlayerMovement : MonoBehaviour
             }
             if (movementDirection.z < 0)
             {
-                if (sprinting == true)
-                {
-                    rig.transform.Translate(Vector3.forward * Time.deltaTime * sprint_speed);
-                    anim.SetBool("isRunning", true);
-                    anim.SetBool("isWalking", false);
-                }
-                if (sprinting != true)
-                {
-                    rig.transform.Translate(Vector3.forward * Time.deltaTime * walk_speed);
+                    rig.transform.Translate(Vector3.back * Time.deltaTime * walk_speed);
                     anim.SetBool("isWalking", true);
                     anim.SetBool("isRunning", false);
-                }
             }
             if (movementDirection.x > 0)
             {
@@ -85,14 +85,10 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+        
 
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            anim.SetBool("isCrouching", true);
-        }
-        else
-            anim.SetBool("isCrouching", false);
+        
 
     }
 

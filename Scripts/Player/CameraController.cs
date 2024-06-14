@@ -104,90 +104,90 @@ namespace FMPUtils.Visuals.CameraTransition.Examples
             fromCamera.enabled = false;
         }
 
-        private void OnTriggerEnter(Collider other) // When adding new camera pair in scene add a new segment like below with corresponding tag. Example below:
-        { 
-            Debug.Log("hit");
-            if(other.tag == "camera_1")
-            {                                           // What the next segment would look like.
-                set_camera_inactive();                 // set_camera_inactive();
-                fromCamera = normal_camera_list[0];           // fromCamera = normal_camera_list[previous number segment number + 1]; 
-                toCamera = smell_camera_list[0];            // toCamera = smell_camera_list[previous number segment number +1]; 
-                set_camera_active();                   // set_camera_active(); 
-            }
+        //private void OnTriggerEnter(Collider other) // When adding new camera pair in scene add a new segment like below with corresponding tag. Example below:
+        //{ 
+        //    Debug.Log("hit");
+        //    if(other.tag == "camera_1")
+        //    {                                           // What the next segment would look like.
+        //        set_camera_inactive();                 // set_camera_inactive();
+        //        fromCamera = normal_camera_list[0];           // fromCamera = normal_camera_list[previous number segment number + 1]; 
+        //        toCamera = smell_camera_list[0];            // toCamera = smell_camera_list[previous number segment number +1]; 
+        //        set_camera_active();                   // set_camera_active(); 
+        //    }
 
-            if (other.tag == "camera_2")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[1];
-                toCamera = smell_camera_list[1];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_2")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[1];
+        //        toCamera = smell_camera_list[1];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_3")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[2];
-                toCamera = smell_camera_list[2];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_3")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[2];
+        //        toCamera = smell_camera_list[2];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_4")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[3];
-                toCamera = smell_camera_list[3];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_4")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[3];
+        //        toCamera = smell_camera_list[3];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_5")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[4];
-                toCamera = smell_camera_list[4];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_5")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[4];
+        //        toCamera = smell_camera_list[4];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_6")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[5];
-                toCamera = smell_camera_list[5];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_6")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[5];
+        //        toCamera = smell_camera_list[5];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_7")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[6];
-                toCamera = smell_camera_list[6];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_7")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[6];
+        //        toCamera = smell_camera_list[6];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_8")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[7];
-                toCamera = smell_camera_list[7];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_8")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[7];
+        //        toCamera = smell_camera_list[7];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_9")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[8];
-                toCamera = smell_camera_list[8];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_9")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[8];
+        //        toCamera = smell_camera_list[8];
+        //        set_camera_active();
+        //    }
 
-            if (other.tag == "camera_10")
-            {
-                set_camera_inactive();
-                fromCamera = normal_camera_list[9];
-                toCamera = smell_camera_list[9];
-                set_camera_active();
-            }
+        //    if (other.tag == "camera_10")
+        //    {
+        //        set_camera_inactive();
+        //        fromCamera = normal_camera_list[9];
+        //        toCamera = smell_camera_list[9];
+        //        set_camera_active();
+        //    }
 
-        }
+        //}
 
 
 

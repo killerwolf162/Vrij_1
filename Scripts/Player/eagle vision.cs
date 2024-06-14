@@ -6,9 +6,14 @@ public class EagleVisionMultiple : MonoBehaviour
     public Material eagleVisionMaterial; // Assign this in the inspector
     private Dictionary<Renderer, Material[]> originalMaterials;
     private bool isEagleVisionEnabled = false;
+    private Camera normalCamera, smellCamera;
 
     void Start()
     {
+
+        normalCamera = GameObject.FindGameObjectWithTag("Player_camera").GetComponent<Camera>();
+        normalCamera = GameObject.FindGameObjectWithTag("Smell_camera").GetComponent<Camera>();
+
         // Find all renderers in the scene
         Renderer[] renderers = FindObjectsOfType<Renderer>();
         originalMaterials = new Dictionary<Renderer, Material[]>();
@@ -26,6 +31,14 @@ public class EagleVisionMultiple : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ToggleEagleVision();
+            normalCamera.enabled = false;
+            smellCamera.enabled = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            ToggleEagleVision();
+            normalCamera.enabled = true;
+            smellCamera.enabled = false;
         }
     }
 

@@ -8,7 +8,7 @@ namespace FMPUtils.Visuals.CameraTransition.Examples
         [SerializeField] private Camera fromCamera;
         [SerializeField] private Camera toCamera;
         [Range(0.1f, 10f)]
-        [SerializeField] private float transitionDuration = 1f;
+        [SerializeField] private float transitionDuration = 3f;
         [Header("User Defined Transition Properties")]
         [SerializeField] private Material transitionTestMaterial;
         [SerializeField] private Texture transitionTestMaskTexture;
