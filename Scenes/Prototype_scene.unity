@@ -65311,6 +65311,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 750488042}
   - {fileID: 767441910}
   - {fileID: 1604348533}
   - {fileID: 1957821978}
@@ -65403,7 +65404,6 @@ Transform:
   - {fileID: 1347146823}
   - {fileID: 100815141}
   - {fileID: 673155671}
-  - {fileID: 750488042}
   - {fileID: 4905657}
   - {fileID: 1985682701}
   - {fileID: 647251615}
@@ -108232,6 +108232,14 @@ PrefabInstance:
     - target: {fileID: 2910254416350967300, guid: 0cd0baf03c97d61429e7e173f480baaf, type: 3}
       propertyPath: m_Name
       value: holzmarkt25_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412084020893035532, guid: 0cd0baf03c97d61429e7e173f480baaf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412084020893035532, guid: 0cd0baf03c97d61429e7e173f480baaf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 28.98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
