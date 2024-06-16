@@ -1,0 +1,17 @@
+﻿{
+    "walk01_loop_251104": {
+        "Version": "1.10.1822.1",
+        "Scene": {
+            "Name": true,
+            "SupportShaderSelect": true
+        },
+        "Export Directory": "C:/RLConverterServices/RLConverter/TempData/Convert/a7a8e70ce7c40627/JIC6bb1e587134092c02",
+        "Object": {
+            "walk01_loop_251104": {
+                "Generation": "AccuRig",
+                "Physics": {},
+                "Meshes": {}
+            }
+        }
+    }
+}
