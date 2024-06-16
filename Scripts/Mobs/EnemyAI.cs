@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public State state;
 
     public NavMeshAgent agent;
+    private Animator anim;
 
     [SerializeField]
     private GameObject start_waypoint, waypoint, player;
@@ -92,12 +93,18 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-
+        if (agent.velocity.x > 0 || agent.velocity.y > 0 || agent.velocity.z > 0)
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+            anim.SetBool("isWalking", false);
     }
 
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         state = State.Patrol;
         player = GameObject.FindGameObjectWithTag("Player");
         NextState();
