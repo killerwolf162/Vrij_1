@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -141,6 +142,11 @@ public class EnemyAI : MonoBehaviour
         else if (other.tag == "Start_Waypoint")
         {
             target_pos = waypoint.transform.position;
+        }
+        if(other.tag == "Player")
+        {
+            Debug.Log("hit player");
+            SceneManager.LoadScene("DeathScreen");
         }
     }
 
